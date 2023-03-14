@@ -5,11 +5,13 @@ import { WORDS } from '../../data'
 
 import GuessInput from '../GuessInput'
 import GuessResult from '../GuessResult/GuessResult'
+
 import WonBanner from '../WonBanner/WonBanner'
 import LostBanner from '../LostBanner/LostBanner'
+import GameStartBanner from '../GameStartBanner/GameStartBanner'
 
 // Pick a random word on every pageload.
-const answer = sample(WORDS)
+let answer = sample(WORDS)
 // To make debugging easier, we'll log the solution in the console.
 console.info({ answer })
 
@@ -27,8 +29,19 @@ function Game() {
       setGameStatus('lost')
     }
   }
+
+  function handleRestart() {
+    setGameStatus('running')
+    setGuesses([])
+    answer = sample(WORDS)
+    console.info({ answer })
+  }
+
   return (
     <>
+      <button className='btn-primary' onClick={handleRestart}>
+        Restart
+      </button>
       <GuessResult guesses={guesses} answer={answer} />
       <GuessInput gameStatus={gameStatus} addGuessResults={handleGuess} />
       {gameStatus === 'won' && <WonBanner numOfGuesses={guesses.length} />}

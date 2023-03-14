@@ -184,6 +184,10 @@ h1 {
   background: var(--color-error);
   color: white;
 }
+.start.banner {
+  background: var(--color-warning);
+  color: white;
+}
 
 .visually-hidden {
   position: absolute;
@@ -194,6 +198,14 @@ h1 {
   margin: -1px;
   padding: 0;
   border: 0;
+}
+
+.btn-primary {
+  background-color: blue;
+  color: white;
+  width: fit-content;
+  padding: 8px;
+  border-radius: 5px;
 }
 
 /*
