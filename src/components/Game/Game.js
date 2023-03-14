@@ -39,9 +39,11 @@ function Game() {
 
   return (
     <>
-      <button className='btn-primary' onClick={handleRestart}>
-        Restart
-      </button>
+      {gameStatus !== 'running' && (
+        <button className='btn-primary' onClick={handleRestart}>
+          Restart
+        </button>
+      )}
       <GuessResult guesses={guesses} answer={answer} />
       <GuessInput gameStatus={gameStatus} addGuessResults={handleGuess} />
       {gameStatus === 'won' && <WonBanner numOfGuesses={guesses.length} />}
